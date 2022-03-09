@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Invoice</title>
+
+		<style>
+			.invoice-box {
+				max-width: 800px;
+				margin: auto;
+				padding: 30px;
+				border: 1px solid #eee;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+				font-size: 16px;
+				line-height: 24px;
+				font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+				color: #555;
+			}
+			.invoice-box table {
+				width: 100%;
+				line-height: inherit;
+				text-align: left;
+			}
+			.invoice-box table td {
+				padding: 5px;
+				vertical-align: top;
+			}
+			.invoice-box tr > td.text-bold {
+				font-weight: 600;
+			}
+			.invoice-box tr.user-detail-wrapper table tr td  {
+				border-bottom: 1px solid #eee;
+			}
+			.company-name {
+				font-size: 21px;
+				text-align: center;
+				font-weight: 700;
+				word-spacing: 3px;
+			}
+			.invoice-box table tr.company-name td {
+				border-bottom: 2px solid #000;
+			}
+			.note {
+				font-size: 14px;
+			}
+			.invoice-box table tr.warning-wrapper td[colspan]{
+				border-bottom: 1px solid #ddd;
+				padding: 0px;
+			}
+			.invoice-box .note-heading{
+				font-weight: 600;
+			}
+			.invoice-box .note-warning{
+				font-size: 12px;
+				float: left;
+			}
+			.invoice-box tr.user-detail-wrapper td,
+			.invoice-box tr.time-detail td,
+			.invoice-box tr.user-option-info td,
+			.invoice-box tr.comments-by-signature td,
+			.invoice-box tr.position td,
+			.invoice-box tr.quality-of-work td,
+			.invoice-box tr.repeat-user td,
+			.invoice-box tr.signature td,
+			.invoice-box tr.term-condition td,
+			.invoice-box tr.points td{
+				padding: 0px;
+				font-size: 12px;
+				line-height: 1.1rem;
+			}
+			.invoice-box table tr.time-detail td table tr td:nth-child(n+2) {
+				border-bottom: 1px solid #eee;
+			}
+			.invoice-box tr.user-detail-wrapper table tr td.info-heading {
+				font-weight: 600;
+			}
+			.invoice-box tr.user-detail-wrapper table tr td.name {
+				float: left;
+			}
+			.invoice-box tr.user-option-info table tr td:nth-child(n+2) {
+				float: left;
+				margin-left: 20px;
+			}
+			/* .invoice-box table tr.comments-by-signature td table tr td:nth-child(1) {
+				border-bottom: 3px dotted #eee;
+			} */
+			.invoice-box tr.signature table tr td {
+				border-bottom: 1px solid #eee;
+			} 
+
+			.invoice-box tr.term-condition td:last-child{
+				float: right;
+			}
+			
+			
+
+			.invoice-box table tr td:nth-child(2) {
+				/* text-align: right; */
+			}
+
+			.invoice-box table tr.top table td {
+				padding-bottom: 20px;
+			}
+
+			.invoice-box table tr.top table td.title {
+				font-size: 45px;
+				line-height: 45px;
+				color: #333;
+			}
+
+			.invoice-box table tr.information table td {
+				padding-bottom: 40px;
+			}
+
+			.invoice-box table tr.heading td {
+				background: #eee;
+				border-bottom: 1px solid #ddd;
+				font-weight: bold;
+				font-size: 12px;
+			}
+
+			.invoice-box table tr.authority-info td {
+				font-size: 12px;
+				line-height: 1rem;
+			}
+
+			.invoice-box table tr.details td {
+				padding-bottom: 20px;
+			}
+
+			.invoice-box table tr.item td {
+				border-bottom: 1px solid #eee;
+			}
+
+			.invoice-box table tr.item.last td {
+				border-bottom: none;
+			}
+
+			.invoice-box table tr.total td:nth-child(2) {
+				border-top: 2px solid #eee;
+				font-weight: bold;
+			}
+
+			@media only screen and (max-width: 600px) {
+				.invoice-box table tr.top table td {
+					width: 100%;
+					display: block;
+					text-align: center;
+				}
+
+				.invoice-box table tr.information table td {
+					width: 100%;
+					display: block;
+					text-align: center;
+				}
+			}
+
+			/** RTL **/
+			/* .invoice-box.rtl {
+				direction: rtl;
+				font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+			}
+
+			.invoice-box.rtl table {
+				text-align: right;
+			}
+
+			.invoice-box.rtl table tr td:nth-child(2) {
+				text-align: left;
+			} */
+		</style>
+	</head>
+
+	<body>
+		<div class="invoice-box">
+			<table cellpadding="0" cellspacing="0">
+				<tr class="company-name">
+					<td colspan="2">
+						Absolute Interpreting and Translations Ltd
+					</td>
+				</tr>
+				<tr class="note">
+					<td colspan="2">
+						Note: By accepting this job you are agreeing with the following terms/conditions
+						explained at the bottom of your timesheet
+					</td>
+				</tr>
+				<tr class="warning-wrapper">
+					<td colspan="2">
+						<table>
+							<tr>
+								<td class="note-heading">
+									INTERPRETER TIMESHEET
+								</td>
+								<td class="note-warning">
+									Timesheets: MUST be Uploaded Within 3 Days
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr class="user-detail-wrapper">
+					<td>
+						<table>
+							<tr>
+								<td class="info-heading" colspan="6">To be filled in by the interpreter</td>
+							</tr>
+							<tr class="booking-info">
+								<td class="info-heading">
+									Interpreters Full Name
+								</td>
+								<td class="name">
+									kaywilliams
+								</td>
+								<td class="text-bold">
+									Booking ID: 
+								</td>
+								<td>292332</td>
+								<td  class="text-bold">
+									Client ID: 
+								</td>
+								<td>421</td>
+							</tr>
+							<tr class="language">
+								<td class="text-bold">Language:</td>
+								<td>BSL-Sign Langu</td>
+								<td class="text-bold">Client Ref:</td>
+								<td>Vishal</td>
+								<td class="text-bold">Duration in Hours:</td>
+								<td>2</td>
+							</tr>
+							<tr class="schedule">
+								<td class="text-bold">Date of Job:</td>
+								<td>02/03/2022</td>
+								<td class="text-bold">Time of Job:</td>
+								<td>10:00 AM</td>
+								<td class="text-bold">Contact Person:</td>
+								<td>Natalie</td>
+							</tr>
+							<tr class="contact-details">
+								<td class="text-bold">Absolute Contact No:</td>
+								<td colspan="2">8417809551/9936391899</td>
+								<td class="text-bold">Client Contact Number:</td>
+								<td colspan="2">8417809551</td>
+							</tr>
+							<tr class="Address">
+								<td colspan="2" class="text-bold">Venue/Place of Appointment:</td>
+								<td colspan="4">53 Edgbaston Park Road Edgbaston, B15 2RS</td>
+							</tr>
+						</table>
+					</td>
+					<td class="title">
+						<img src="./user.jpg" style="width: 100%; max-width: 150px;padding: 2px;" />
+					</td>
+				</tr>
+				<tr class="user-detail-wrapper">
+					<td colspan="6">
+						<table>
+							<tr class="Nature-of-appointment">
+								<td colspan="2" class="text-bold">Nature of Appointment if know:</td>
+								<td colspan="4"></td>
+							</tr>
+							<tr class="End-user">
+								<td colspan="2" class="text-bold">Client/Patient/Enduser Name:</td>
+								<td >vishal</td>
+								<td colspan="2" class="text-bold">Travel/Mileage/Parking/Train:</td>
+								<td >14 miles</td>
+							</tr>
+							<tr class="Health-info">
+								<td colspan="2" class="text-bold">Health and Safety info:</td>
+								<td colspan="4">na</td>
+							</tr>
+							<tr class="special-instruction">
+								<td colspan="2" class="text-bold">Special Instructions:</td>
+								<td colspan="4">na</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				
+				<!-- <tr class="top">
+					<td colspan="2">
+						<table>
+							<tr>
+								<td class="title">
+									<img src="" style="width: 100%; max-width: 300px" />
+								</td>
+
+								<td>
+									Invoice #: 123<br />
+									Created: January 1, 2015<br />
+									Due: February 1, 2015
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr> -->
+				<tr class="heading">
+					<td colspan="2">To be filled by the client i.e. Doctor, Social Worker, officer, Police etc</td>
+				</tr>
+				<tr class="authority-info">
+					<td colspan="2">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis distinctio doloribus blanditiis saepe commodi possimus
+						 ex, ea aperiam. Doloribus animi omnis aliquam harum quae corrupti dolorem qui veniam, architecto cum! Lorem ipsum, dolor
+						sit amet consectetur adipisicing elit. Obcaecati qui quibusdam quae! Maiores quisquam voluptatum ullam rerum inventore harum
+						 reprehenderit, odit, molestiae culpa velit voluptas ab officiis vitae. Ratione, vitae!
+					</td>
+				</tr>
+				<tr class="time-detail">
+					<td colspan="2">
+						<table>
+							<tr>
+								<td class="text-bold">Time of Job:</td>
+								<td>10:00</td>
+								<td class="text-bold">Time of Arrival:</td>
+								<td>10AM</td>
+								<td class="text-bold">Start Time:</td>
+								<td>10AM</td>
+								<td class="text-bold">Finish Time:</td>
+								<td>11AM</td>
+							</tr>
+						</table>
+					</td>
+					
+				</tr>
+				<tr class="user-option-info">
+					<td colspan="2">
+						<table>
+							<tr>
+								<td class="text-bold">Service user Did Not Attend: </td>
+								<td>☑️</td>
+								<td class="text-bold">Delayed Appointment:</td>
+								<td>☑️</td>
+								<td class="text-bold">Delayed Appointment:</td>
+								<td>☑️</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr class="comments-by-signature">
+					<td colspan="2">
+						<table>
+							<tr>
+								<td colspan="2" class="text-bold">Comments by Signature:</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr class="position">
+					<td colspan="2">
+						<table>
+							<tr>
+								<td class="text-bold">Signature of Signatory:</td>
+								<td>HR Advisor</td>
+								<td class="text-bold">Print Name and Position:</td>
+								<td>HR Advisor</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr class="heading">
+					<td colspan="2">How Would You Rate This Interpreter? ✂️ You may cut this part of the sheet and send it to Absolute later.</td>
+				</tr>
+				<tr class="quality-of-work">
+					<td colspan="2">
+						<table>
+							<tr>
+								<td class="text-bold">Quality of Work</td>
+								<td>Excellent</td>
+								<td>☑️</td>
+								<td>Very Good</td>
+								<td>☑️</td>
+								<td>Good</td>
+								<td>☑️</td>
+								<td>Fair</td>
+								<td>☑️</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr class="quality-of-work">
+					<td colspan="2">
+						<table>
+							<tr>
+								<td class="text-bold">Attendance</td>
+								<td>Excellent</td>
+								<td>☑️</td>
+								<td>Very Good</td>
+								<td>☑️</td>
+								<td>Good</td>
+								<td>☑️</td>
+								<td>Fair</td>
+								<td>☑️</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr class="quality-of-work">
+					<td colspan="2">
+						<table>
+							<tr>
+								<td class="text-bold">Attitude</td>
+								<td>Excellent</td>
+								<td>☑️</td>
+								<td>Very Good</td>
+								<td>☑️</td>
+								<td>Good</td>
+								<td>☑️</td>
+								<td>Fair</td>
+								<td>☑️</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr class="quality-of-work">
+					<td colspan="2">
+						<table>
+							<tr>
+								<td class="text-bold">Dress Code</td>
+								<td>Professional</td>
+								<td>☑️</td>
+								<td>Smart</td>
+								<td>☑️</td>
+								<td>Casual</td>
+								<td>☑️</td>
+								<td class="text-bold">Booking Id</td>
+								<td>292332</td>
+								<td class="text-bold">Interpreter</td>
+								<td>Key Willian</td>
+								<td class="text-bold">Client Id</td>
+								<td>421</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr class="repeat-user">
+					<td colspan="2">
+						<table>
+							<tr>
+								<td class="text-bold">WOULD YOU USE THIS INTERPRETER AGAIN?</td>
+								<td>Please write yes or No...................................................................................................................</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr class="heading">
+					<td colspan="2">Interpreter Counter Fraud Declaration:</td>
+				</tr>
+				<tr class="authority-info">
+					<td colspan="2">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis distinctio doloribus blanditiis saepe commodi possimus
+						 ex, ea aperiam. Doloribus animi omnis aliquam harum quae corrupti dolorem qui veniam, architecto cum! Lorem ipsum, dolor
+						sit amet consectetur adipisicing elit. Obcaecati qui quibusdam quae! Maiores quisquam voluptatum ullam rerum inventore harum
+						 reprehenderit, odit, molestiae culpa velit voluptas ab officiis vitae. Ratione, vitae!
+					</td>
+				</tr>
+				<tr class="signature">
+					<td colspan="2">
+						<table>
+							<tr>
+								<td class="text-bold">Signature of Interpreter:</td>
+								<td>...........................................................................</td>
+								<td class="text-bold">Date:</td>
+								<td>...........................................................................</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr class="term-condition">
+					<td class="text-bold">Terms of Payment for this Booking: Checked Box you are paid an all 
+						inclusive rate for this Booking basic Terms and Conditions on 
+					Completed Timesheets, Late Arriving and Cancellations </td>
+					<td>☑️</td>
+				</tr>
+				<tr class="points">
+					<td colspan="2">
+						<table>
+							<tr>
+								<td>1. Timesheets must be uploaded within 3 days</td>
+								<td>&nbsp;&nbsp;&nbsp;&nbsp; 2. Please keep original copies secure for a minimum of 12 mont</td>
+							</tr>
+							<tr>
+								<td>3. Late arriving will be penalised to the nearest quarter</td>
+								<td>&nbsp;&nbsp;&nbsp;&nbsp;4. A penalty of $35 may apply if you fail to attend an appointment</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									5. Timesheets uploaded later then 20 days may not be processed
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									6.  Travel expenses must be timesheet and receipts must be attached/uploded 
+									to be timesheet or they will be fined*
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									7: Bookings cancelled less then 48 hours notice may be fined*
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr class="heading">
+					<td colspan="2">IMPORTANT NOTE:</td>
+				</tr>
+				<tr class="term-condition">
+					<td colspan="2">
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus quas quisquam at dolorem nostrum harum, tempora culpa nulla quia repellendus obcaecati minus nisi expedita asperiores, vero aliquid laudantium commodi quaerat.
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>
